@@ -9,28 +9,65 @@
 <body>
     <script>
         //computerPlay - return Rock,Paper or Scissors (or 1,2,3)
-      function computerPlay(){
-        const choices = ["Rock", "Paper","Scissors"];
-        const random = Math.floor(Math.random() *choices.length);
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function computerPlay(){
+            const choices = ["Rock", "Paper","Scissors"];
+            const random = Math.floor(Math.random() *choices.length);
 
         //console.log(random, choices[random]);
 
-        return choices[random];
-      };
+            return random,choices[random];
+        };
       
       //console.log(computerPlay());
 
       //play a round against player
-      function playRound (playerSelection, computerSelection){
+        function playRound (playerSelection, computerSelection){
 
-        let playerChoice = prompt("Rock, Paper or Scissors?","");
+            let playerChoice = prompt("Rock, Paper or Scissors?","");
 
-        console.log("Player Choice: " + playerChoice);
-        console.log("Computer Selection: " + computerSelection);
-      };
+            console.log("Player Choice: " + playerChoice);
+            console.log("Computer Selection: " + computerSelection);
+
+            if (playerChoice.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "SCISSORS"){
+
+                console.log("You win! 1 point to you!")
+                playerScore = playerScore + 1;
+                console.log("Player: " + playerScore + "\nComputer: " + computerScore)
+            }else if(playerChoice.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "PAPER"){
+
+                console.log("You loose! 1 point to the computer!")
+                computerScore = computerScore + 1;
+                console.log("Player: " + playerScore + "\nComputer: " + computerScore)
+            }else if(playerChoice.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK"){
+
+                console.log("You win! 1 point to you!")
+                playerScore = playerScore + 1;
+                console.log("Player: " + playerScore + "\nComputer: " + computerScore)
+            }else if(playerChoice.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "SCISSORS"){
+
+            console.log("You loose! 1 point to the computer!")
+            computerScore = computerScore + 1;
+            console.log("Player: " + playerScore + "\nComputer: " + computerScore)
+            }else if(playerChoice.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() === "PAPER"){
+
+            console.log("You win! 1 point to you!")
+            playerScore = playerScore + 1;
+            console.log("Player: " + playerScore + "\nComputer: " + computerScore)
+            }else if(playerChoice.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() === "ROCK"){
+
+            console.log("You loose! 1 point to the computer!")
+            computerScore = computerScore + 1;
+            console.log("Player: " + playerScore + "\nComputer: " + computerScore)
+            }else {
+                console.log("Oh no look's like it a tie no points for anyone!")
+            }
+        };
       
-      playRound("",computerPlay());
-      
+       playRound("",computerPlay());
+        
     </script>
 </body>
 </html>
