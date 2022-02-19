@@ -67,28 +67,24 @@
         };
 
         function getPlayerChoice(){
-            let playerChoice = prompt("Rock, Paper or Scissors?","").toUpperCase();
-            
-            if (playerChoice == undefined){
-                return noPlay();
-            }else if (playerChoice !== "ROCK" &&playerChoice !== "PAPER" && playerChoice !== "SCISSORS"){
+            let playerChoice = prompt("Rock, Paper or Scissors?","");
+            if (playerChoice === null){
+                console.log("There is no escape!")
+                return getPlayerChoice();
+            }else if (playerChoice.toUpperCase() !== "ROCK" &&playerChoice.toUpperCase() !== "PAPER" && playerChoice.toUpperCase() !== "SCISSORS"){
               alert("You must pick either Rock, Paper or Scissors...")
               return getPlayerChoice();
             } else
+            playerChoice = playerChoice.toUpperCase()
             return playerChoice;
         };
-
-        function noPlay(){
-            console.log("Okay you don't have to play I guess...")
-        }
-      
-    //    playRound("",computerPlay());
+               
         function game(){
             for (let i = 0; i < 5; i++) {
                 playRound(getPlayerChoice(),computerPlay());
             }
             console.log("Well looks like that's 5 rounds! Lets check the score!\nPlayer: " + playerScore + "\nComputer: " + computerScore)
-            if (playerScore > computerPlay){
+            if (playerScore > computerScore){
                 console.log("Congratulations you win!!!")
             } else if(computerScore > playerScore){
                 console.log("Ah bad luck you loose...\nWhy not try again?")
