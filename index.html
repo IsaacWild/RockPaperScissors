@@ -27,6 +27,14 @@
         function playRound (playerSelection, computerSelection){
 
             let playerChoice = prompt("Rock, Paper or Scissors?","");
+            
+            if (playerChoice == undefined){
+                return noPlay();
+            }else if (playerChoice.toUpperCase() !== "ROCK" &&playerChoice.toUpperCase() !== "PAPER" && playerChoice.toUpperCase() !== "SCISSORS"){
+              alert("You must pick Rock, Paper or Scissors")
+              playRound();
+                
+            } else
 
             console.log("Player Choice: " + playerChoice);
             console.log("Computer Selection: " + computerSelection);
@@ -65,9 +73,13 @@
                 console.log("Oh no look's like it a tie no points for anyone!")
             }
         };
+
+        function noPlay(){
+            console.log("Okay you don't have to play I guess...")
+        }
       
        playRound("",computerPlay());
-        
+               
     </script>
 </body>
 </html>
