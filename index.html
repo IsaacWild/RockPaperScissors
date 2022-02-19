@@ -13,7 +13,7 @@
         let computerScore = 0;
 
         function computerPlay(){
-            const choices = ["Rock", "Paper","Scissors"];
+            const choices = ["ROCK", "PAPER","SCISSORS"];
             const random = Math.floor(Math.random() *choices.length);
 
         //console.log(random, choices[random]);
@@ -26,45 +26,35 @@
       //play a round against player
         function playRound (playerSelection, computerSelection){
 
-            let playerChoice = prompt("Rock, Paper or Scissors?","");
-            
-            if (playerChoice == undefined){
-                return noPlay();
-            }else if (playerChoice.toUpperCase() !== "ROCK" &&playerChoice.toUpperCase() !== "PAPER" && playerChoice.toUpperCase() !== "SCISSORS"){
-              alert("You must pick Rock, Paper or Scissors")
-              playRound();
-                
-            } else
-
-            console.log("Player Choice: " + playerChoice);
+            console.log("Player Choice: " + playerSelection);
             console.log("Computer Selection: " + computerSelection);
 
-            if (playerChoice.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "SCISSORS"){
+            if (playerSelection === "ROCK" && computerSelection === "SCISSORS"){
 
                 console.log("You win! 1 point to you!")
                 playerScore = playerScore + 1;
                 console.log("Player: " + playerScore + "\nComputer: " + computerScore)
-            }else if(playerChoice.toUpperCase() === "ROCK" && computerSelection.toUpperCase() === "PAPER"){
+            }else if(playerSelection === "ROCK" && computerSelection === "PAPER"){
 
                 console.log("You loose! 1 point to the computer!")
                 computerScore = computerScore + 1;
                 console.log("Player: " + playerScore + "\nComputer: " + computerScore)
-            }else if(playerChoice.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "ROCK"){
+            }else if(playerSelection === "PAPER" && computerSelection === "ROCK"){
 
                 console.log("You win! 1 point to you!")
                 playerScore = playerScore + 1;
                 console.log("Player: " + playerScore + "\nComputer: " + computerScore)
-            }else if(playerChoice.toUpperCase() === "PAPER" && computerSelection.toUpperCase() === "SCISSORS"){
+            }else if(playerSelection === "PAPER" && computerSelection === "SCISSORS"){
 
             console.log("You loose! 1 point to the computer!")
             computerScore = computerScore + 1;
             console.log("Player: " + playerScore + "\nComputer: " + computerScore)
-            }else if(playerChoice.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() === "PAPER"){
+            }else if(playerSelection === "SCISSORS" && computerSelection === "PAPER"){
 
             console.log("You win! 1 point to you!")
             playerScore = playerScore + 1;
             console.log("Player: " + playerScore + "\nComputer: " + computerScore)
-            }else if(playerChoice.toUpperCase() === "SCISSORS" && computerSelection.toUpperCase() === "ROCK"){
+            }else if(playerSelection === "SCISSORS" && computerSelection === "ROCK"){
 
             console.log("You loose! 1 point to the computer!")
             computerScore = computerScore + 1;
@@ -75,6 +65,18 @@
             }
         };
 
+        function getPlayerChoice(){
+            let playerChoice = prompt("Rock, Paper or Scissors?","").toUpperCase();
+            
+            if (playerChoice == undefined){
+                return noPlay();
+            }else if (playerChoice !== "ROCK" &&playerChoice !== "PAPER" && playerChoice !== "SCISSORS"){
+              alert("You must pick either Rock, Paper or Scissors...")
+              return getPlayerChoice();
+            } else
+            return playerChoice;
+        };
+
         function noPlay(){
             console.log("Okay you don't have to play I guess...")
         }
@@ -82,7 +84,7 @@
     //    playRound("",computerPlay());
         function game(){
             for (let i = 0; i < 5; i++) {
-                playRound("",computerPlay());
+                playRound(getPlayerChoice(),computerPlay());
             }
             console.log("Well looks like that's 5 rounds! Lets check the score!\nPlayer: " + playerScore + "\nComputer: " + computerScore)
             if (playerScore > computerPlay){
@@ -96,7 +98,6 @@
         }
 
         game();
-
                
     </script>
 </body>
