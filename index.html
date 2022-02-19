@@ -71,6 +71,7 @@
             console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }else {
                 console.log("Oh no look's like it a tie no points for anyone!")
+                console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }
         };
 
@@ -78,7 +79,24 @@
             console.log("Okay you don't have to play I guess...")
         }
       
-       playRound("",computerPlay());
+    //    playRound("",computerPlay());
+        function game(){
+            for (let i = 0; i < 5; i++) {
+                playRound("",computerPlay());
+            }
+            console.log("Well looks like that's 5 rounds! Lets check the score!\nPlayer: " + playerScore + "\nComputer: " + computerScore)
+            if (playerScore > computerPlay){
+                console.log("Congratulations you win!!!")
+            } else if(computerScore > playerScore){
+                console.log("Ah bad luck you loose...\nWhy not try again?")
+            }else if(computerScore == playerScore){
+                console.log("It's a Tie!\nIt look's good on you!")
+            }
+            console.log("Thank you for playing reload the page to play again!")
+        }
+
+        game();
+
                
     </script>
 </body>
