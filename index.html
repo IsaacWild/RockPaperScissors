@@ -73,10 +73,7 @@
                 console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }
             //unsure why not working...
-            if (playerScore == 5){
-                playerScoreLabel.textContent = playerScore + " Your the winner!!!";
-
-            }
+            
         };
 
         function getPlayerChoice(){
@@ -120,6 +117,10 @@
             playerChoice = "ROCK";
             playRound(playerChoice,computerPlay());
             playerScoreLabel.textContent = playerScore;
+            if (playerScore == 5){
+                playerScoreLabel.textContent = playerScore + " Your the winner!!!";
+
+            }
             compScoreLabel.textContent = computerScore;
         });
         const btnPaper = document.querySelector('#paper');
@@ -127,6 +128,10 @@
             playerChoice = "PAPER";
             playRound(playerChoice,computerPlay());
             playerScoreLabel.textContent = playerScore;
+            if (playerScore == 5){
+                playerScoreLabel.textContent = playerScore + " Your the winner!!!";
+
+            }
             compScoreLabel.textContent = computerScore;
         });
         const btnScissors = document.querySelector('#scissors');
@@ -134,6 +139,10 @@
             playerChoice = "SCISSORS"; 
             playRound(playerChoice,computerPlay());
             playerScoreLabel.textContent = playerScore;
+            if (playerScore == 5){
+                playerScoreLabel.textContent = playerScore + " Your the winner!!!";
+
+            }
             compScoreLabel.textContent = computerScore;
         });
                
