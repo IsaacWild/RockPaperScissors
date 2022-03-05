@@ -7,7 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Hay to see the game being played hit F12 or open your inspection pannel to see whats going on in the console!</p>
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div>
+        <p>Player score: </p>
+        <p id="playerScore"></p>
+        <p>Comuter Score: </p>
+        <p id="compScore"></p>
+    </div>
     <script>
         //computerPlay - return Rock,Paper or Scissors (or 1,2,3)
         let playerScore = 0;
@@ -64,25 +72,32 @@
                 console.log("Oh no look's like it a tie no points for anyone!")
                 console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }
+            //unsure why not working...
+            if (playerScore == 5){
+                playerScoreLabel.textContent = playerScore + " Your the winner!!!";
+
+            }
         };
 
         function getPlayerChoice(){
-            let playerChoice = prompt("Rock, Paper or Scissors?","");
-            if (playerChoice === null){
-                console.log("There is no escape!")
-                return getPlayerChoice();
-            }else if (playerChoice.toUpperCase() !== "ROCK" &&playerChoice.toUpperCase() !== "PAPER" && playerChoice.toUpperCase() !== "SCISSORS"){
-              alert("You must pick either Rock, Paper or Scissors...")
-              return getPlayerChoice();
-            } else
-            playerChoice = playerChoice.toUpperCase()
+            // let playerChoice = prompt("Rock, Paper or Scissors?","");
+            // if (playerChoice === null){
+            //     console.log("There is no escape!")
+            //     return getPlayerChoice();
+            // }else if (playerChoice.toUpperCase() !== "ROCK" &&playerChoice.toUpperCase() !== "PAPER" && playerChoice.toUpperCase() !== "SCISSORS"){
+            //   alert("You must pick either Rock, Paper or Scissors...")
+            //   return getPlayerChoice();
+            // } else
+            // playerChoice = playerChoice.toUpperCase()
+            
             return playerChoice;
+                       
         };
                
         function game(){
-            for (let i = 0; i < 5; i++) {
-                playRound(getPlayerChoice(),computerPlay());
-            }
+            
+            playRound(getPlayerChoice(),computerPlay());
+            
             console.log("Well looks like that's 5 rounds! Lets check the score!\nPlayer: " + playerScore + "\nComputer: " + computerScore)
             if (playerScore > computerScore){
                 console.log("Congratulations you win!!!")
@@ -91,10 +106,36 @@
             }else if(computerScore == playerScore){
                 console.log("It's a Tie!\nIt look's good on you!")
             }
-            console.log("Thank you for playing reload the page to play again!")
+            
         }
 
-        game();
+        
+        //button.addEventListener("click",game);
+        //change player selection on specific button click
+        let playerChoice = "";
+        const btnRock = document.querySelector('#rock');
+        const playerScoreLabel = document.querySelector("#playerScore");
+        const compScoreLabel = document.querySelector("#compScore");
+        btnRock.addEventListener("click", () => {
+            playerChoice = "ROCK";
+            playRound(playerChoice,computerPlay());
+            playerScoreLabel.textContent = playerScore;
+            compScoreLabel.textContent = computerScore;
+        });
+        const btnPaper = document.querySelector('#paper');
+        btnPaper.addEventListener("click", () => {
+            playerChoice = "PAPER";
+            playRound(playerChoice,computerPlay());
+            playerScoreLabel.textContent = playerScore;
+            compScoreLabel.textContent = computerScore;
+        });
+        const btnScissors = document.querySelector('#scissors');
+        btnScissors.addEventListener("click", () => {
+            playerChoice = "SCISSORS"; 
+            playRound(playerChoice,computerPlay());
+            playerScoreLabel.textContent = playerScore;
+            compScoreLabel.textContent = computerScore;
+        });
                
     </script>
 </body>
