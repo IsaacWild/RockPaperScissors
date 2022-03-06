@@ -1,0 +1,71 @@
+body{
+    background-image: url(arm-wrestling.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: serif;
+    font-family: 'Roboto', sans-serif;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 400px;
+    align-items: center;
+    padding: 50px;
+    background-color:rgba(196, 187, 187, 0.39);
+}
+
+.button{
+    height: auto;
+    border-radius: 12px;
+    max-height: 300px; 
+    max-width: 600px;
+    /* flex: 1 1 auto; */
+    font-size: 50px;
+    text-align: center;
+    margin: 50px;
+    background-color:rgb(245, 172, 14);
+    color: black;
+    border: 0px;
+    box-shadow: 5px 5px 20px rgb(250, 164, 5);
+    transition: all 0.3s ease 0s;
+}
+
+.button:hover {
+    background-color: rgb(245, 172, 14);
+    box-shadow: 0px 15px 20px rgba(214, 109, 10, 0.8);
+    color: #fff;
+    transform: translateY(-7px);
+    color: white;
+  }
+
+#buttonContainer{
+    display: flex;
+}
+
+#scores{
+    display: flex;
+    gap: 40px;
+    font-size: 30px;
+    background-color:rgba(63, 61, 61, 0.445);
+    padding: 5px 12px;
+}
+
+#playerScores{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#computerScores{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#round{
+    font-size: 40px;
+    padding: 12px;
+    background-color: rgba(117, 117, 117, 0.568);
+}

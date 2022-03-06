@@ -5,16 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,100;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-    <div>
-        <p>Player score: </p>
-        <p id="playerScore"></p>
-        <p>Comuter Score: </p>
-        <p id="compScore"></p>
+    <div id="container">
+        <div id="buttonContainer">
+            <button id="rock" class="button">Rock</button>
+            <button id="paper" class="button">Paper</button>
+            <button id="scissors" class="button">Scissors</button>
+        </div>
+            <div>
+                <p id="round">Win Tie Loose?</p>
+            </div>
+        <div>
+            <div id="scores">
+                <div id="playerScores">
+                    <p>Player score: </p>
+                    <p id="playerScore">0</p>
+                </div>
+                <div id="computerScores">
+                    <p>Computer Score: </p>
+                    <p id="compScore">0</p>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
         //computerPlay - return Rock,Paper or Scissors (or 1,2,3)
@@ -40,42 +57,40 @@
 
             if (playerSelection === "ROCK" && computerSelection === "SCISSORS"){
 
-                console.log("You win! 1 point to you!")
+                roundStat.textContent = "You win! 1 point to you!"
                 playerScore = playerScore + 1;
                 console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }else if(playerSelection === "ROCK" && computerSelection === "PAPER"){
 
-                console.log("You loose! 1 point to the computer!")
+                roundStat.textContent = "You loose! 1 point to the computer!"
                 computerScore = computerScore + 1;
                 console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }else if(playerSelection === "PAPER" && computerSelection === "ROCK"){
 
-                console.log("You win! 1 point to you!")
+                roundStat.textContent = "You win! 1 point to you!"
                 playerScore = playerScore + 1;
                 console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }else if(playerSelection === "PAPER" && computerSelection === "SCISSORS"){
 
-            console.log("You loose! 1 point to the computer!")
+            roundStat.textContent = "You loose! 1 point to the computer!"
             computerScore = computerScore + 1;
             console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }else if(playerSelection === "SCISSORS" && computerSelection === "PAPER"){
 
-            console.log("You win! 1 point to you!")
+            roundStat.textContent = "You win! 1 point to you!"
             playerScore = playerScore + 1;
             console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }else if(playerSelection === "SCISSORS" && computerSelection === "ROCK"){
 
-            console.log("You loose! 1 point to the computer!")
+            roundStat.textContent = "You loose! 1 point to the computer!"
             computerScore = computerScore + 1;
             console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }else {
-                console.log("Oh no look's like it a tie no points for anyone!")
+                roundStat.textContent = "Oh no look's like it a tie no points for anyone!"
                 console.log("Player: " + playerScore + "\nComputer: " + computerScore)
             }
-            //unsure why not working...
-            
         };
-
+        
         function getPlayerChoice(){
             // let playerChoice = prompt("Rock, Paper or Scissors?","");
             // if (playerChoice === null){
@@ -97,11 +112,11 @@
             
             console.log("Well looks like that's 5 rounds! Lets check the score!\nPlayer: " + playerScore + "\nComputer: " + computerScore)
             if (playerScore > computerScore){
-                console.log("Congratulations you win!!!")
+                console.log("Congratulations you win!!!");
             } else if(computerScore > playerScore){
-                console.log("Ah bad luck you loose...\nWhy not try again?")
+                console.log("Ah bad luck you loose...\nWhy not try again?");
             }else if(computerScore == playerScore){
-                console.log("It's a Tie!\nIt look's good on you!")
+                console.log("It's a Tie!\nIt look's good on you!");
             }
             
         }
@@ -113,13 +128,16 @@
         const btnRock = document.querySelector('#rock');
         const playerScoreLabel = document.querySelector("#playerScore");
         const compScoreLabel = document.querySelector("#compScore");
+        const roundStat = document.querySelector("#round");
         btnRock.addEventListener("click", () => {
             playerChoice = "ROCK";
             playRound(playerChoice,computerPlay());
             playerScoreLabel.textContent = playerScore;
             if (playerScore == 5){
-                playerScoreLabel.textContent = playerScore + " Your the winner!!!";
+                roundStat.textContent = " Your the winner!!!";
 
+            }else if(computerScore == 5){
+                roundStat.textContent = " You lost, reload to try again!";
             }
             compScoreLabel.textContent = computerScore;
         });
@@ -129,8 +147,9 @@
             playRound(playerChoice,computerPlay());
             playerScoreLabel.textContent = playerScore;
             if (playerScore == 5){
-                playerScoreLabel.textContent = playerScore + " Your the winner!!!";
-
+                roundStat.textContent = " Your the winner!!!";
+            }else if(computerScore == 5){
+                roundStat.textContent = " You lost, reload to try again!";
             }
             compScoreLabel.textContent = computerScore;
         });
@@ -140,12 +159,12 @@
             playRound(playerChoice,computerPlay());
             playerScoreLabel.textContent = playerScore;
             if (playerScore == 5){
-                playerScoreLabel.textContent = playerScore + " Your the winner!!!";
-
+                roundStat.textContent = " Your the winner!!!";
+            }else if(computerScore == 5){
+                roundStat.textContent = " You lost, reload to try again!";
             }
             compScoreLabel.textContent = computerScore;
-        });
-               
+        }); 
     </script>
 </body>
 </html>
